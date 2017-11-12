@@ -36,7 +36,6 @@ public class GetRegisteredStudentsList extends HttpServlet {
 		
 		try {
 			List<RegisterStudentModel> registerStudentList=  StudentManagementDao.getStudentLists();
-			System.out.println("List at controller end is :    "+registerStudentList.toString());
 			request.setAttribute("studentList", registerStudentList);
 			RequestDispatcher rd = request.getRequestDispatcher("studentList.jsp");
 				rd.forward(request, response);
