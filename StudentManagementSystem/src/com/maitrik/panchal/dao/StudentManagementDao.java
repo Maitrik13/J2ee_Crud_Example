@@ -74,9 +74,9 @@ public class StudentManagementDao {
 				model.setCourse(rs.getString("course"));
 				model.setBranch(rs.getString("branch"));
 				model.setRollNumber(rs.getString("roll_number"));
-				model.setEmail(rs.getString("emailid"));
+				model.setEmail(rs.getString("email"));
 				model.setUserName(rs.getString("userName"));
-				model.setStudentName(rs.getString("password"));
+				model.setPassword(rs.getString("password"));
 
 				studentList.add(model);
 			}
@@ -87,6 +87,41 @@ public class StudentManagementDao {
 		}
 		return studentList;
 
+	}
+
+	public static int deleteStudentDetail(String studentId) throws StudentManagementException {
+
+		Connection conn = null;
+		Statement st = null;
+		int result = 0;
+		
+		conn = JDBCConnectionUtil.getConnection();
+		try {
+			st = conn.createStatement();
+		result = st.executeUpdate("delete from student_register where id = "+studentId);
+		} catch (SQLException e) {
+			throw new StudentManagementException("Error occured while ddeleteing user : SQL Exception : StudentManagementDao.deleteStudentDetail() : "+e.getMessage(), e);
+		}
+		return result;
+	}
+
+	public static int updateStudentDeetail(String studentId, RegisterStudentModel model) throws StudentManagementException {
+		
+		Connection conn = null;
+		Statement st = null;
+		int result = 0;
+		
+		conn = JDBCConnectionUtil.getConnection();
+		try {
+			st = conn.createStatement();
+		result = st.executeUpdate("update student_register set name='"+model.getStudentName()+"' , course = '"+model.getCourse()+"'"
+				+ ", branch = '"+model.getBranch()+"' , roll_number = '"+model.getRollNumber()+"'"
+						+ " ,email = '"+model.getEmail()+"' , userName = '"+model.getUserName()+"' "
+								+ ", password = '"+model.getPassword()+"'where id = "+studentId);
+		} catch (SQLException e) {
+			throw new StudentManagementException("Error occured while updating user : SQL Exception : StudentManagementDao.updateStudentDeetail() : "+e.getMessage(), e);
+		}
+		return result;
 	}
 
 }

@@ -11,6 +11,6 @@
 
 <a href="register_student.jsp">Click here to register Student</a>
 
-<a href="">Click here to get Student list</a>
+<a href="GetRegisteredStudentsList?action=viewFlag">Click here to get Student list</a>
 </body>
 </html>
