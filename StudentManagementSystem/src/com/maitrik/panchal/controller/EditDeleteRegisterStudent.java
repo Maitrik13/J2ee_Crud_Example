@@ -39,9 +39,23 @@ public class EditDeleteRegisterStudent extends HttpServlet {
 		String action = request.getParameter("action");
 		String studentId = null;
 		int successResult = 0;
+		
+		if("ViewData".equalsIgnoreCase(action)){
+			studentId = request.getParameter("studentId");
+			if(!studentId.isEmpty()){
+				try {
+					RegisterStudentModel getStudentDetailById = StudentManagementDao.getStudentByStudentId(studentId);
+					request.setAttribute("detail", getStudentDetailById);
+					RequestDispatcher rd = request.getRequestDispatcher("register_student.jsp");
+					rd.include(request, response);
+				} catch (StudentManagementException e) {
+					System.out.println("Error occured while fetching student detail by student id :: EditDeleteRegisterStudent.doGet()"+e.getMessage());
+				}
+			}
+		}
 
 		if ("Edit".equalsIgnoreCase(action)) {
-			studentId = request.getParameter("studentId");
+			studentId = request.getParameter("id");
 			if (!studentId.isEmpty()) {
 				RegisterStudentModel model = StudentUtil.getRegisterUserData(request);
 				try {

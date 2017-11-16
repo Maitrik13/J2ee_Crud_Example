@@ -31,7 +31,7 @@
 			<td>${studentList.userName }</td>
 			<td>${studentList.password }</td>
 			<td>
-			<a href="EditDeleteRegisterStudent?action=edit&studentId=<c:out value="${studentList.id}"/>">Edit</a>
+			<a href="EditDeleteRegisterStudent?action=ViewData&studentId=<c:out value="${studentList.id}"/>">Edit</a>
 			<a href="EditDeleteRegisterStudent?action=delete&studentId=<c:out value="${studentList.id }"/>">Delete</a>
 			</td>
 			</tr>		

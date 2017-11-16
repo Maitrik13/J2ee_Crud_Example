@@ -124,4 +124,36 @@ public class StudentManagementDao {
 		return result;
 	}
 
+	public static RegisterStudentModel getStudentByStudentId(String studentId) throws StudentManagementException {
+
+		RegisterStudentModel studentDetail = new RegisterStudentModel();
+		
+		Connection conn = null;
+		Statement st = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = JDBCConnectionUtil.getConnection();
+			st = conn.createStatement();
+			rs = st.executeQuery("select * from student_register where id="+studentId);
+			
+			while(rs.next()){
+				studentDetail.setId(rs.getString("id"));
+				studentDetail.setStudentName(rs.getString("name"));
+				studentDetail.setCourse(rs.getString("course"));
+				studentDetail.setBranch(rs.getString("branch"));
+				studentDetail.setRollNumber(rs.getString("roll_number"));
+				studentDetail.setEmail(rs.getString("email"));
+				studentDetail.setUserName(rs.getString("userName"));
+				studentDetail.setPassword(rs.getString("password"));
+			}
+		} catch (SQLException e) {
+			throw new StudentManagementException("Error occured while fetching user detail by student id : SQL Exception : StudentManagementDao.getStudentByStudentId() : "+e.getMessage(), e);
+		}
+		
+		
+		
+		return studentDetail;
+	}
+
 }

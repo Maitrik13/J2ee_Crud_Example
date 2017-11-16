@@ -15,48 +15,48 @@
 
 				<tr>
 					<td><label for="id">Id: </label></td>
-					<td><input id="id" maxlength="50" name="id" type="text" /></td>
+					<td><input id="id" maxlength="50" name="id" type="text" value="${detail.id}" /></td>
 				</tr>
 
 				<tr>
 					<td><label for="name">Name: </label></td>
-					<td><input id="name" maxlength="50" name="name" type="text" /></td>
+					<td><input id="name" maxlength="50" name="name" type="text" value="${detail.studentName}" /></td>
 				</tr>
 
 				<tr>
 					<td><label for="course">Course: </label></td>
 					<td><input id="course" maxlength="50" name="course"
-						type="text" /></td>
+						type="text" value="${detail.course}"/></td>
 				</tr>
 
 				<tr>
 					<td><label for="branch">Branch: </label></td>
 					<td><input id="branch" maxlength="50" name="branch"
-						type="text" /></td>
+						type="text" value="${detail.branch}" /></td>
 				</tr>
 
 				<tr>
 					<td><label for="rolln0">Rollno: </label></td>
 					<td><input id="rollno" maxlength="50" name="rollno"
-						type="text" /></td>
+						type="text" value="${detail.rollNumber}"/></td>
 				</tr>
 
 				<tr>
 					<td><label for="email">Email_Address:</label></td>
-					<td><input id="email" maxlength="50" name="email" type="text" /></td>
+					<td><input id="email" maxlength="50" name="email" type="text" value="${detail.email}"/></td>
 				</tr>
 
 				<tr>
 					<td><label for="username">User_Name:</label></td>
 					<td><input id="username" maxlength="50" name="username"
-						type="text" /></td>
+						type="text" value="${detail.userName}"/></td>
 				</tr>
 
 
 				<tr>
 					<td><label for="password">Password:</label></td>
 					<td><input id="password" maxlength="50" name="password"
-						type="password" /></td>
+						type="password" value="${detail.password}"/></td>
 				</tr>
 
 				<tr>
